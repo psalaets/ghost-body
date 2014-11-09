@@ -1,0 +1,19 @@
+{
+  "name": "ghost-body",
+  "version": "1.0.0",
+  "description": "p2.js add-on for bodies that detect collision but have no collision response.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test.js"
+  },
+  "keywords": [
+    "p2",
+    "p2.js"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.0.1",
+    "p2": "^0.6.0"
+  }
+}
