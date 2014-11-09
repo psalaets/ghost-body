@@ -6,11 +6,19 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psalaets/ghost-body.git"
+  },
+  "homepage": "https://github.com/psalaets/ghost-body",
+  "bugs": {
+    "url": "https://github.com/psalaets/ghost-body/issues"
+  },
   "keywords": [
     "p2",
     "p2.js"
   ],
-  "author": "",
+  "author": "Paul Salaets <psalaets@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "mocha": "^2.0.1",
