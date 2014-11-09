@@ -1,33 +1,32 @@
 # ghost-body
 
-p2.js add-on for bodies that detect collision but have no collision response.
+[p2.js](https://schteppe.github.io/p2.js/) add-on for bodies that detect collision but have no collision response.
 
-## Usage
+## What this does
 
-### Create World and Body
+A ghost body will not collide with or bounce off of other bodies. You can still react to a ghost overlapping other bodies via World's [beginContact](http://schteppe.github.io/p2.js/docs/classes/World.html#event_beginContact) event.
 
-(nothing new here)
+## API
 
-    var p2 = require('p2');
-    var world = new p2.World();
-    
-    var body = new p2.Body({...});
-    body.addShape(new p2.Circle());
-    
-    world.addBody(body);
+### .enable(World)
 
-### Hook ghost-body into world
+Hooks into a p2 World. Call this once per World.
 
-    var ghostBody = require('ghost-body');
-    
-    ghostBody.enable(world);
-    
-### Mark body as ghost
-    
-    ghostBody.ghostify(body);
-    
-    
-Now add more bodies to world and start calling world#step like usual. Ghosted bodies will not collide with regular bodies but world still fires beginContact event for it.
+### .disable(World)
+
+Unhooks from a p2 World.
+
+### .ghostify(Body)
+
+Mark a p2 Body as a ghost. Call this once on every Body that needs ghost treatment.
+
+### .unghostify(Body)
+
+Remove ghost marking.
+
+### .isGhost(Body)
+
+See if Body has been marked as ghost.
 
 ## Install
 
