@@ -27,7 +27,11 @@ function disable(world) {
 }
 
 function preSolveListener(event) {
-  event.contactEquations.forEach(function(equation) {
+  disableEquationsInvolvingGhosts(event.contactEquations);
+}
+
+function disableEquationsInvolvingGhosts(equations) {
+  equations.forEach(function(equation) {
     if (isGhost(equation.bodyA) || isGhost(equation.bodyB)) {
       equation.enabled = false;
     }
