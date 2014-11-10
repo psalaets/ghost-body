@@ -38,7 +38,9 @@ describe('World collisions', function() {
   var body2;
 
   beforeEach(function() {
-    world = new p2.World();
+    world = new p2.World({
+      gravity: [0, 0]
+    });
 
     body1 = circleBody(0, 0);
     world.addBody(body1);
