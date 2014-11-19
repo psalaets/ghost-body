@@ -59,7 +59,7 @@ describe('World collisions', function() {
     body1 = circleBody(0, 0);
     world.addBody(body1);
 
-    body2 = circleBody(20, 0);
+    body2 = circleBody(25, 0);
     world.addBody(body2);
   });
 
@@ -84,7 +84,8 @@ describe('World collisions', function() {
       });
 
       // run some physics
-      world.step(10);
+      tenSteps(world);
+
 
       // ghost1 is now on the right of body2
       assert(ghost1.position[0] > body2.position[0]);
@@ -108,7 +109,7 @@ describe('World collisions', function() {
       });
 
       // run some physics
-      world.step(10);
+      tenSteps(world);
 
       // ghost 1 is now on right of ghost 2
       assert(ghost1.position[0] > ghost2.position[0]);
@@ -129,7 +130,7 @@ describe('World collisions', function() {
       });
 
       // run some physics
-      world.step(10);
+      tenSteps(world);
 
       // body1 is still on left of body2
       assert(body1.position[0] < body2.position[0]);
@@ -159,7 +160,7 @@ describe('World collisions', function() {
       });
 
       // run some physics
-      world.step(10);
+      tenSteps(world);
 
       // ghost1 is still on left of body2
       assert(ghost1.position[0] < body2.position[0]);
@@ -183,7 +184,7 @@ describe('World collisions', function() {
       });
 
       // run some physics
-      world.step(10);
+      tenSteps(world);
 
       // ghost1 is still on left of body2
       assert(ghost1.position[0] < ghost2.position[0]);
@@ -204,7 +205,7 @@ describe('World collisions', function() {
       });
 
       // run some physics
-      world.step(10);
+      tenSteps(world);
 
       // body1 is still on left of body2
       assert(body1.position[0] < body2.position[0]);
@@ -225,4 +226,11 @@ function circleBody(x, y) {
 function involves(beginContactEvent, body) {
   return beginContactEvent.bodyA.id === body.id ||
          beginContactEvent.bodyB.id === body.id;
+}
+
+function tenSteps(world) {
+  var steps = 10;
+  for (var i = 0; i < steps; i++) {
+    world.step(1);
+  }
 }
