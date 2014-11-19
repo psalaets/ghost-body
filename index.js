@@ -8,10 +8,12 @@ module.exports = {
 
 function ghostify(body) {
   body.ghost = true;
+  return body;
 }
 
 function unghostify(body) {
   delete body.ghost;
+  return body;
 }
 
 function isGhost(body) {

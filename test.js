@@ -14,6 +14,12 @@ describe('.ghostify(Body)', function () {
 
     assert(ghostBodyModule.isGhost(body));
   });
+
+  it('returns the Body', function() {
+    var ghost = ghostBodyModule.ghostify(body);
+
+    assert.strictEqual(ghost, body);
+  });
 });
 
 describe('.unghostify(Body)', function () {
@@ -29,6 +35,14 @@ describe('.unghostify(Body)', function () {
     ghostBodyModule.unghostify(body);
 
     assert(!ghostBodyModule.isGhost(body));
+  });
+
+  it('returns the Body', function() {
+    ghostBodyModule.ghostify(body);
+
+    var nonGhost = ghostBodyModule.unghostify(body);
+
+    assert.strictEqual(nonGhost, body);
   });
 });
 
