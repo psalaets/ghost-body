@@ -30,6 +30,7 @@ function disable(world) {
 
 function preSolveListener(event) {
   disableEquationsInvolvingGhosts(event.contactEquations);
+  disableEquationsInvolvingGhosts(event.frictionEquations);
 }
 
 function disableEquationsInvolvingGhosts(equations) {

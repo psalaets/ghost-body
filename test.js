@@ -136,6 +136,35 @@ describe('World collisions', function() {
       assert(body1.position[0] < body2.position[0]);
       assert(beginContactFired, 'beginContact should have fired for the bodies');
     });
+
+    it("ghost has no friction against non-ghost", function() {
+      var ghost1 = ghostBodyModule.ghostify(body1);
+
+      // move bodies a little further apart for this one
+      body2.position = [40, 0];
+      var oldBodyPosition = body2.position.slice();
+
+      // send ghost1 towards body2 so it skims the edge of body2
+      // which would move body2 a little bit if there was friction
+      ghost1.velocity = [10, 5];
+
+      // listen for contact event
+      var beginContactFired = false;
+      world.on('beginContact', function(event) {
+        if (involves(event, ghost1) && involves(event, body2)) {
+          beginContactFired = true;
+        }
+      });
+
+      // run some physics
+      tenSteps(world);
+
+      // body2 should not have moved
+      assert.equal(body2.position[0], oldBodyPosition[0]);
+      assert.equal(body2.position[1], oldBodyPosition[1]);
+
+      assert(beginContactFired, 'beginContact should have fired for the bodies');
+    });
   });
 
   describe('disabled off a World', function() {
