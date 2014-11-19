@@ -69,8 +69,7 @@ describe('World collisions', function() {
     });
 
     it("ghost passes through non-ghost", function() {
-      var ghost1 = body1;
-      ghostBodyModule.ghostify(ghost1);
+      var ghost1 = ghostBodyModule.ghostify(body1);
 
       // send bodies towards eachother
       ghost1.velocity = [10, 0];
@@ -93,9 +92,8 @@ describe('World collisions', function() {
     });
 
     it("ghost passes through ghost", function() {
-      var ghost1 = body1, ghost2 = body2;
-      ghostBodyModule.ghostify(ghost1);
-      ghostBodyModule.ghostify(ghost2);
+      var ghost1 = ghostBodyModule.ghostify(body1);
+      var ghost2 = ghostBodyModule.ghostify(body2);
 
       // send bodies towards eachother
       ghost1.velocity = [10, 0];
@@ -146,8 +144,7 @@ describe('World collisions', function() {
     });
 
     it("ghost runs into non-ghost", function() {
-      var ghost1 = body1;
-      ghostBodyModule.ghostify(ghost1);
+      var ghost1 = ghostBodyModule.ghostify(body1);
 
       // send bodies towards eachother
       ghost1.velocity = [10, 0];
@@ -170,9 +167,8 @@ describe('World collisions', function() {
     });
 
     it("ghost runs into ghost", function() {
-      var ghost1 = body1, ghost2 = body2;
-      ghostBodyModule.ghostify(ghost1);
-      ghostBodyModule.ghostify(ghost2);
+      var ghost1 = ghostBodyModule.ghostify(body1);
+      var ghost2 = ghostBodyModule.ghostify(body2);
 
       // send bodies towards eachother
       ghost1.velocity = [10, 0];
