@@ -8,23 +8,23 @@ A ghost body will not bounce off of or have friction with other bodies. You can 
 
 ## API
 
-### .enable(World)
+### ghostBody.enable(World)
 
 Enables a World to have ghost bodies. Call this once per World.
 
-### .disable(World)
+### ghostBody.disable(World)
 
 Disables ghost bodies in a World.
 
-### .ghostify(Body)
+### ghostBody.ghostify(Body)
 
 Turn on ghost mode for a Body. Call this once on every Body that needs ghost treatment.
 
-### .unghostify(Body)
+### ghostBody.unghostify(Body)
 
 Turn off ghost mode for a Body.
 
-### .isGhost(Body)
+### ghostBody.isGhost(Body)
 
 See if Body is a ghost.
 
