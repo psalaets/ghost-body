@@ -10,23 +10,23 @@ A ghost body will not bounce off of or have friction with other bodies. You can 
 
 ### .enable(World)
 
-Hooks into a p2 World. Call this once per World.
+Enables a World to have ghost bodies. Call this once per World.
 
 ### .disable(World)
 
-Unhooks from a p2 World.
+Disables ghost bodies in a World.
 
 ### .ghostify(Body)
 
-Mark a p2 Body as a ghost. Call this once on every Body that needs ghost treatment.
+Turn on ghost mode for a Body. Call this once on every Body that needs ghost treatment.
 
 ### .unghostify(Body)
 
-Remove ghost marking.
+Turn off ghost mode for a Body.
 
 ### .isGhost(Body)
 
-See if Body has been marked as ghost.
+See if Body is a ghost.
 
 ## Install
 
