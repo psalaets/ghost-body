@@ -1,6 +1,6 @@
 # ghost-body
 
-[p2.js](https://schteppe.github.io/p2.js/) add-on for bodies that detect collision but have no collision response.
+[p2](https://schteppe.github.io/p2.js/) add-on for bodies that detect collision but have no collision response.
 
 ## What this does
 
