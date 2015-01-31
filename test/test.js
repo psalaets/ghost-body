@@ -1,6 +1,6 @@
 var assert = require('assert');
 var p2 = require('p2');
-var ghostBodyModule = require('./');
+var ghostBodyModule = require('..');
 
 describe('.ghostify(Body)', function () {
   var body;
