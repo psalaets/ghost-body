@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- ghost bodies now fired events: bodyEntered, populated, bodyExited, emptied
+- ghost bodies now fire events: bodyEntered, populated, bodyExited, emptied
 
 ### Changed
 
