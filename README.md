@@ -28,6 +28,24 @@ Turn off ghost mode for a Body.
 
 See if Body is a ghost.
 
+## Events fired by ghost bodies
+
+### bodyEntered
+
+Fired when a body enters a ghost body.
+
+### populated
+
+Fired when a body enters a ghost body that was empty.
+
+### bodyExited
+
+Fired when a body leaves a ghost body.
+
+### emptied
+
+Fired when the last body leaves a ghost body.
+
 ## Install
 
     npm install ghost-body
