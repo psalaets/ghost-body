@@ -243,6 +243,168 @@ describe('World collisions', function() {
   });
 });
 
+describe('Events', function() {
+  var world, body1, body2;
+
+  beforeEach(function() {
+    world = new p2.World({
+      gravity: [0, 0]
+    });
+
+    body1 = circleBody(0, 0);
+    world.addBody(body1);
+
+    body2 = circleBody(25, 0);
+    world.addBody(body2);
+
+    ghostBodyModule.enable(world);
+  });
+
+  describe('Body enters empty ghost', function() {
+    it('fires populated event', function() {
+      var event;
+      var ghost1 = ghostBodyModule.ghostify(body1);
+
+      ghost1.on('populated', function(e) {
+        event = e;
+      });
+
+      // send bodies towards eachother
+      ghost1.velocity = [10, 0];
+      body2.velocity = [-10, 0];
+
+      // run some physics
+      tenSteps(world);
+
+      assert(event);
+    });
+
+    it('fires bodyEntered event', function() {
+      var event;
+      var ghost1 = ghostBodyModule.ghostify(body1);
+
+      ghost1.on('bodyEntered', function(e) {
+        event = e;
+      });
+
+      // send bodies towards eachother
+      ghost1.velocity = [10, 0];
+      body2.velocity = [-10, 0];
+
+      // run some physics
+      tenSteps(world);
+
+      assert(event);
+    });
+  });
+
+  describe('Body enters non-empty ghost', function() {
+    it('only fires bodyEntered event', function() {
+      var event;
+      var ghost1 = ghostBodyModule.ghostify(body1);
+      // 3rd body needed to pre-populate ghost1
+      var body3 = circleBody(-10, 0);
+      world.addBody(body3);
+
+      // update world so ghost1 and body3 overlap is seen before
+      // attaching listeners
+      world.step(1);
+
+      ghost1.on('bodyEntered', function(e) {
+        event = e;
+      });
+
+      ghost1.on('populated', function(e) {
+        assert.fail(e, undefined, 'populated event should not fire');
+      });
+
+      // body2 towards ghost1
+      body2.velocity = [-20, 0];
+
+      // run some physics
+      tenSteps(world);
+
+      assert(event);
+    });
+  });
+
+  describe('last Body exits ghost', function() {
+    it('fires emptied event', function() {
+      var event;
+      var ghost1 = ghostBodyModule.ghostify(body1);
+
+      // place body2 so it's already overlapping ghost1
+      body2.position = [5, 0];
+
+      ghost1.on('emptied', function(e) {
+        event = e;
+      });
+
+      // send bodies away from eachother
+      ghost1.velocity = [20, 0];
+      body2.velocity = [-20, 0];
+
+      // run some physics
+      tenSteps(world);
+
+      assert(event);
+    });
+
+    it('fires bodyExited event', function() {
+      var event;
+      var ghost1 = ghostBodyModule.ghostify(body1);
+
+      // place body2 so it's already overlapping ghost1
+      body2.position = [5, 0];
+
+      ghost1.on('bodyExited', function(e) {
+        event = e;
+      });
+
+      // send bodies away from eachother
+      ghost1.velocity = [20, 0];
+      body2.velocity = [-20, 0];
+
+      // run some physics
+      tenSteps(world);
+
+      assert(event);
+    });
+  });
+
+  describe('non-last Body exits ghost', function() {
+    it('only fires bodyExited event', function() {
+      var event;
+      var ghost1 = ghostBodyModule.ghostify(body1);
+      // 3rd body needed to pre-populate ghost1
+      var body3 = circleBody(-10, 0);
+      world.addBody(body3);
+      // place body2 in ghost but not touching body3
+      body2.position = [10, 0];
+
+      // update world so ghost1 and body3 overlap is seen before
+      // attaching listeners
+      world.step(1);
+
+      ghost1.on('bodyExited', function(e) {
+        event = e;
+      });
+
+      ghost1.on('emptied', function(e) {
+        assert.fail(e, undefined, 'emptied event should not fire');
+      });
+
+      // body2 leaves ghost1
+      body2.velocity = [20, 0];
+
+      // run some physics
+      tenSteps(world);
+
+      assert(event);
+    });
+  });
+});
+
 function circleBody(x, y) {
   var body = new p2.Body({
     mass: 1,
