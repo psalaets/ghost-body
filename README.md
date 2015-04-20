@@ -30,6 +30,8 @@ See if Body is a ghost.
 
 ## Events fired by ghost bodies
 
+Events are fired using [p2's built-in event system](http://schteppe.github.io/p2.js/docs/classes/EventEmitter.html).
+
 ### bodyEntered
 
 Fired when a body enters a ghost body.
