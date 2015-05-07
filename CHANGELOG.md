@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.1] - 2015-05-07
+
+### Changed
+
+- Module-internal data renamed to decrease chances of name clash with p2's or user's properties on body
+
 ## [2.0.0] - 2015-04-16
 
 ### Added
