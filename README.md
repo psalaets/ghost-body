@@ -6,6 +6,8 @@
 
 A ghost body will not bounce off of or have friction with other bodies. You can still react to a ghost overlapping other bodies via World's [beginContact](http://schteppe.github.io/p2.js/docs/classes/World.html#event_beginContact) event.
 
+Ghost bodies fire events when other bodies enter/exit them.
+
 ## API
 
 ### ghostBody.enable(World)
