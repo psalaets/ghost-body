@@ -7,19 +7,19 @@ module.exports = {
 };
 
 function ghostify(body) {
-  body.ghost = {
+  body._ghost = {
     overlappingBodyCount: 0
   };
   return body;
 }
 
 function unghostify(body) {
-  delete body.ghost;
+  delete body._ghost;
   return body;
 }
 
 function isGhost(body) {
-  return !!body.ghost;
+  return !!body._ghost;
 }
 
 function enable(world) {
@@ -58,9 +58,9 @@ function beginContactListener(event) {
 }
 
 function bodyEntered(ghostBody) {
-  ghostBody.ghost.overlappingBodyCount += 1;
+  ghostBody._ghost.overlappingBodyCount += 1;
 
-  var wasEmpty = ghostBody.ghost.overlappingBodyCount == 1;
+  var wasEmpty = ghostBody._ghost.overlappingBodyCount == 1;
   if (wasEmpty) {
     ghostBody.emit({
       type: 'populated'
@@ -83,9 +83,9 @@ function endContactListener(event) {
 }
 
 function bodyExited(ghostBody) {
-  ghostBody.ghost.overlappingBodyCount -= 1;
+  ghostBody._ghost.overlappingBodyCount -= 1;
 
-  var isNowEmpty = ghostBody.ghost.overlappingBodyCount == 0;
+  var isNowEmpty = ghostBody._ghost.overlappingBodyCount == 0;
   if (isNowEmpty) {
     ghostBody.emit({
       type: 'emptied'
