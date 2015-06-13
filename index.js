@@ -63,12 +63,14 @@ function bodyEntered(ghostBody) {
   var wasEmpty = ghostBody._ghost.overlappingBodyCount == 1;
   if (wasEmpty) {
     ghostBody.emit({
-      type: 'populated'
+      type: 'populated',
+      count: ghostBody._ghost.overlappingBodyCount
     });
   }
 
   ghostBody.emit({
-    type: 'bodyEntered'
+    type: 'bodyEntered',
+    count: ghostBody._ghost.overlappingBodyCount
   });
 }
 
@@ -88,11 +90,13 @@ function bodyExited(ghostBody) {
   var isNowEmpty = ghostBody._ghost.overlappingBodyCount == 0;
   if (isNowEmpty) {
     ghostBody.emit({
-      type: 'emptied'
+      type: 'emptied',
+      count: ghostBody._ghost.overlappingBodyCount
     });
   }
 
   ghostBody.emit({
-    type: 'bodyExited'
+    type: 'bodyExited',
+    count: ghostBody._ghost.overlappingBodyCount
   });
 }

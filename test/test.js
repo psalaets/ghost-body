@@ -277,6 +277,7 @@ describe('Events', function() {
       tenSteps(world);
 
       assert(event);
+      assert.equal(event.count, 1);
     });
 
     it('fires bodyEntered event', function() {
@@ -295,6 +296,7 @@ describe('Events', function() {
       tenSteps(world);
 
       assert(event);
+      assert.equal(event.count, 1);
     });
   });
 
@@ -325,6 +327,7 @@ describe('Events', function() {
       tenSteps(world);
 
       assert(event);
+      assert.equal(event.count, 2);
     });
   });
 
@@ -348,6 +351,7 @@ describe('Events', function() {
       tenSteps(world);
 
       assert(event);
+      assert.equal(event.count, 0);
     });
 
     it('fires bodyExited event', function() {
@@ -369,6 +373,7 @@ describe('Events', function() {
       tenSteps(world);
 
       assert(event);
+      assert.equal(event.count, 0);
     });
   });
 
@@ -401,6 +406,7 @@ describe('Events', function() {
       tenSteps(world);
 
       assert(event);
+      assert.equal(event.count, 1);
     });
   });
 });
