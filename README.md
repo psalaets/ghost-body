@@ -42,6 +42,8 @@ Fired when a body enters a ghost body.
 ghost.on('bodyEntered', function(event) {
   // number of bodies currently overlapping ghost
   event.count
+  // body that entered
+  event.causedBy
 });
 ```
 
@@ -53,6 +55,8 @@ Fired when a body enters a ghost body that was empty.
 ghost.on('populated', function(event) {
   // number of bodies currently overlapping ghost
   event.count
+  // body that entered
+  event.causedBy
 });
 ```
 
@@ -64,6 +68,8 @@ Fired when a body leaves a ghost body.
 ghost.on('bodyExited', function(event) {
   // number of bodies currently overlapping ghost
   event.count
+  // body that exited
+  event.causedBy
 });
 ```
 
@@ -75,6 +81,8 @@ Fired when the last body leaves a ghost body.
 ghost.on('emptied', function(event) {
   // number of bodies currently overlapping ghost
   event.count
+  // body that exited
+  event.causedBy
 });
 ```
 

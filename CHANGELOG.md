@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2015-06-13
+
+### Added
+
+- All events have `causedBy` property which is the body that caused the event.
+
 ## [2.1.0] - 2015-06-13
 
 ### Added
