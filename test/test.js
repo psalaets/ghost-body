@@ -301,6 +301,29 @@ describe('Events', function() {
       assert.equal(event.count, 1);
       assert(event.causedBy === body2);
     });
+
+    it('fires populated event before coinciding bodyEntered event', function() {
+      var events = [];
+      var ghost1 = ghostBodyModule.ghostify(body1);
+
+      ghost1.on('bodyEntered', function(e) {
+        events.push(e);
+      });
+
+      ghost1.on('populated', function(e) {
+        events.push(e);
+      });
+
+      // send bodies towards eachother
+      ghost1.velocity = [10, 0];
+      body2.velocity = [-10, 0];
+
+      // run some physics
+      tenSteps(world);
+
+      assert.equal(events[0].type, 'populated');
+      assert.equal(events[1].type, 'bodyEntered');
+    });
   });
 
   describe('Body enters non-empty ghost', function() {
@@ -380,6 +403,32 @@ describe('Events', function() {
       assert(event);
       assert.equal(event.count, 0);
       assert(event.causedBy === body2);
+    });
+
+    it('fires emptied event before coinciding bodyExited event', function() {
+      var events = [];
+      var ghost1 = ghostBodyModule.ghostify(body1);
+
+      // place body2 so it's already overlapping ghost1
+      body2.position = [5, 0];
+
+      ghost1.on('bodyExited', function(e) {
+        events.push(e);
+      });
+
+      ghost1.on('emptied', function(e) {
+        events.push(e);
+      });
+
+      // send bodies away from eachother
+      ghost1.velocity = [20, 0];
+      body2.velocity = [-20, 0];
+
+      // run some physics
+      tenSteps(world);
+
+      assert.equal(events[0].type, 'emptied');
+      assert.equal(events[1].type, 'bodyExited');
     });
   });
 
