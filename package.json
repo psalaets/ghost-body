@@ -1,6 +1,6 @@
 {
   "name": "ghost-body",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "p2 add-on for bodies that detect collision but have no collision response.",
   "main": "index.js",
   "scripts": {
