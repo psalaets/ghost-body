@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2015-06-13
+
+### Added
+
+- All events have `count` property which is number of bodies currently overlapping the ghost.
+
 ## [2.0.1] - 2015-05-07
 
 ### Changed

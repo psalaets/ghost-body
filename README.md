@@ -38,17 +38,45 @@ Events are fired by ghost bodies using [p2's built-in event system](http://schte
 
 Fired when a body enters a ghost body.
 
+```js
+ghost.on('bodyEntered', function(event) {
+  // number of bodies currently overlapping ghost
+  event.count
+});
+```
+
 ### populated
 
 Fired when a body enters a ghost body that was empty.
+
+```js
+ghost.on('populated', function(event) {
+  // number of bodies currently overlapping ghost
+  event.count
+});
+```
 
 ### bodyExited
 
 Fired when a body leaves a ghost body.
 
+```js
+ghost.on('bodyExited', function(event) {
+  // number of bodies currently overlapping ghost
+  event.count
+});
+```
+
 ### emptied
 
 Fired when the last body leaves a ghost body.
+
+```js
+ghost.on('emptied', function(event) {
+  // number of bodies currently overlapping ghost
+  event.count
+});
+```
 
 ## Install
 
