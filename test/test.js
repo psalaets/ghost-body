@@ -278,6 +278,8 @@ describe('Events', function() {
 
       assert(event);
       assert.equal(event.count, 1);
+
+      assert(event.causedBy === body2);
     });
 
     it('fires bodyEntered event', function() {
@@ -297,6 +299,7 @@ describe('Events', function() {
 
       assert(event);
       assert.equal(event.count, 1);
+      assert(event.causedBy === body2);
     });
   });
 
@@ -328,6 +331,7 @@ describe('Events', function() {
 
       assert(event);
       assert.equal(event.count, 2);
+      assert(event.causedBy === body2);
     });
   });
 
@@ -352,6 +356,7 @@ describe('Events', function() {
 
       assert(event);
       assert.equal(event.count, 0);
+      assert(event.causedBy === body2);
     });
 
     it('fires bodyExited event', function() {
@@ -374,6 +379,7 @@ describe('Events', function() {
 
       assert(event);
       assert.equal(event.count, 0);
+      assert(event.causedBy === body2);
     });
   });
 
@@ -407,6 +413,7 @@ describe('Events', function() {
 
       assert(event);
       assert.equal(event.count, 1);
+      assert(event.causedBy === body2);
     });
   });
 });
