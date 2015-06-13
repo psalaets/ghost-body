@@ -49,7 +49,7 @@ ghost.on('bodyEntered', function(event) {
 
 ### populated
 
-Fired when a body enters a ghost body that was empty.
+Fired when a body enters a ghost body that was empty. Fired before coinciding bodyEntered event.
 
 ```js
 ghost.on('populated', function(event) {
@@ -75,7 +75,7 @@ ghost.on('bodyExited', function(event) {
 
 ### emptied
 
-Fired when the last body leaves a ghost body.
+Fired when the last body leaves a ghost body. Fired before coinciding bodyExited event.
 
 ```js
 ghost.on('emptied', function(event) {
