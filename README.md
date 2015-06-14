@@ -10,6 +10,10 @@ Ghost bodies fire [events](#events) when other bodies enter/exit them.
 
 ## API
 
+```js
+var ghostBody = require('ghost-body');
+```
+
 ### ghostBody.enable(World)
 
 Enables a World to have ghost bodies. Call this once per World.
